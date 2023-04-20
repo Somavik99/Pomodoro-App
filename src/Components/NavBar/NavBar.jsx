@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 
 const NavBar = () => {
-  const [IsActive, setIsActive] = useState(0);
+  const [IsActive, setIsActive] = useContext();
   const Breaks = ["Work", "Short Break", "Long Break"];
 
   const HandleClick = (index)=>[
