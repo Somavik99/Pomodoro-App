@@ -20,4 +20,6 @@ const Title = styled.h1`
   font-size: 2.6rem;
   padding: 3.5rem 0;
   text-align: center;
+  background: transparent;
+
 `;

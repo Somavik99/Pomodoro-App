@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
+import { TimerContextProvider } from "../../Context/PomodoroContext";
 
 const NavBar = () => {
-  const [IsActive, setIsActive] = useContext();
+  const {IsActive, setIsActive} = useContext(TimerContextProvider);
   const Breaks = ["Work", "Short Break", "Long Break"];
 
   const HandleClick = (index)=>[

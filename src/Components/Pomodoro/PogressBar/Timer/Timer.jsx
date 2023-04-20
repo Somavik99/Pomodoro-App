@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import { TimerContextProvider } from "../../../../Context/PomodoroContext";
 
 const Timer = () => {
-  const [ShowTimer, setShowTimer] = useState(556);
-  const [IsStart, setIsStart] = useState(false);
-
+  
+  const TimerState = useContext(TimerContextProvider);
+  const StartState = useContext(TimerContextProvider);
+  const {ShowTimer, setShowTimer} = TimerState
+const { IsStart, setIsStart } = StartState
   useEffect(() => {
     if (IsStart && ShowTimer > 0) {
       const interval = setInterval(() => {
@@ -19,11 +22,10 @@ const Timer = () => {
   };
 
   const ViewTime = () => {
-   
     const min = Math.floor(ShowTimer / 60);
-    const sec = ShowTimer %60;
+    const sec = ShowTimer % 60;
 
-    return `${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`;
+    return `${min < 10 ? "0" + min : min}|${sec < 10 ? "0" + sec : sec}`;
   };
 
   return (

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Timer from "./Timer/Timer";
+import { TimerContextProvider } from "../../../Context/PomodoroContext";
 
 const ProgressBar = () => {
-  const [IsProgress, setIsProgress] = useState(50);
+  const { IsProgress, setIsProgress } = useContext(TimerContextProvider);
 
   return (
     <OuterCircle IsProgress={IsProgress}>
@@ -19,7 +20,7 @@ export default ProgressBar;
 const OuterCircle = styled.div`
   width: 33rem;
   height: 33rem;
-  background: black;
+  /* background: black; */
 
   border-radius: 50%;
   display: grid;
@@ -28,7 +29,7 @@ const OuterCircle = styled.div`
     black
       ${({ IsProgress }) => {
         return IsProgress;
-      }}% ,
+      }}%,
     transparent
       ${({ IsProgress }) => {
         return IsProgress;
