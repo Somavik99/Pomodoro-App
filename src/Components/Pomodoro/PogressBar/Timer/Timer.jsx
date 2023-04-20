@@ -3,11 +3,9 @@ import styled from "styled-components";
 import { TimerContextProvider } from "../../../../Context/PomodoroContext";
 
 const Timer = () => {
-  
-  const TimerState = useContext(TimerContextProvider);
-  const StartState = useContext(TimerContextProvider);
-  const {ShowTimer, setShowTimer} = TimerState
-const { IsStart, setIsStart } = StartState
+  const { ShowTimer, setShowTimer, IsStart, setIsStart ,InTime} =
+    useContext(TimerContextProvider);
+
   useEffect(() => {
     if (IsStart && ShowTimer > 0) {
       const interval = setInterval(() => {
@@ -28,12 +26,21 @@ const { IsStart, setIsStart } = StartState
     return `${min < 10 ? "0" + min : min}|${sec < 10 ? "0" + sec : sec}`;
   };
 
+const TimeRestart = ()=>{
+  setShowTimer(InTime);
+  setIsStart(!IsStart)
+}
+
   return (
     <TimerContainer>
       <TimerText>{ViewTime(ShowTimer)}</TimerText>
-      <InitiationBtn onClick={StartPauseTimer}>
-        {IsStart ? "Pause" : "Start"}
-      </InitiationBtn>
+      {ShowTimer === 0 ? (
+        <RestartButton onClick={TimeRestart}>Reset</RestartButton>
+      ) : (
+        <InitiationBtn onClick={StartPauseTimer}>
+          {IsStart ? "Pause" : "Start"}
+        </InitiationBtn>
+      )}
     </TimerContainer>
   );
 };
@@ -55,4 +62,8 @@ const InitiationBtn = styled.button`
   border: none;
   background: transparent;
   text-align: center;
+`;
+
+const RestartButton = styled(InitiationBtn)`
+  color: #ff0000;
 `;

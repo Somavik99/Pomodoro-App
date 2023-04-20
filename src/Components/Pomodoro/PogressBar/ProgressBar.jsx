@@ -1,10 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import Timer from "./Timer/Timer";
 import { TimerContextProvider } from "../../../Context/PomodoroContext";
 
 const ProgressBar = () => {
-  const { IsProgress, setIsProgress } = useContext(TimerContextProvider);
+  const { IsProgress, setIsProgress, ShowTimer, InTime } =
+    useContext(TimerContextProvider);
+
+  useEffect(() => {
+    setIsProgress(ShowTimer / (InTime / 100));
+  }, [setIsProgress,ShowTimer]);
 
   return (
     <OuterCircle IsProgress={IsProgress}>
