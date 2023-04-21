@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 const TimerContextProvider = createContext();
 const PomodoroContext = ({ children }) => {
   const [Work, setWork] = useState(25 * 60);
-  const [SBreak, setSBreak] = useState(5 );
+  const [SBreak, setSBreak] = useState(5 * 60 );
   const [LBreak, setLBreak] = useState(30 * 60);
   const [InTime, setInTime] = useState(0);
   const [IsActive, setIsActive] = useState(0);

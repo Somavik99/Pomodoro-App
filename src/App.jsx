@@ -10,17 +10,17 @@ function App() {
   const [Show, setShow] = useState(false);
 
   const onClose = () => {
-    setShow(Show);
+    setShow(false);
   };
 
   const onOpen = () => {
-    setShow(!Show);
+    setShow(true);
   };
 
   return (
     <div className="App">
-      <PomodoroModal onClose={onClose} onOpen={onOpen} />
-      <Title>Pomodoro-Timer</Title>
+      <PomodoroModal Show={Show} onClose={onClose} />
+      <Title >Pomodoro-Timer</Title>
       <NavBar />
       <Pomodorto />
       <CogIcon onClick={onOpen}>

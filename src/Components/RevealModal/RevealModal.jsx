@@ -14,5 +14,10 @@ const ModalReveal = styled.div`
   top: 0;
   left: 0;
   z-index: 100;
-  background: #adabab4d;
+  background: #fffefe24;
+
+  @media (max-width: 500px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
